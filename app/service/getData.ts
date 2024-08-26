@@ -1,6 +1,6 @@
 import axios from "axios";
 import { api } from "../utils/helper/responseHelper";
-import { ApiResponse, DataItem } from "../utils/types/client";
+import { DataItem } from "../utils/types/client";
 
 export const getAllExpense = async (): Promise<DataItem[]> => {
   const res = await axios.get(api.expense);
