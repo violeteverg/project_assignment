@@ -21,7 +21,7 @@ export default function DropdownCategory({
     { id: 3, title: "electronics" },
     { id: 4, title: "insurance" },
     { id: 5, title: "entertainment" },
-    { id: 7, title: "clothing" },
+    { id: 6, title: "clothing" },
   ];
 
   return (
