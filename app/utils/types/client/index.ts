@@ -25,3 +25,8 @@ export type ApiResponse = {
   meta: Meta;
   data: DataItem[];
 };
+
+export type dataMontly = {
+  month: string;
+  count: number;
+};

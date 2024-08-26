@@ -189,7 +189,9 @@ export default function RegisterPage() {
                     </span>
                   )}
                 </div>
-                <Button type='submit'>Sign up</Button>
+                <Button type='submit' disabled={loading}>
+                  {loading ? "Loading..." : "Sign Up"}
+                </Button>
               </div>
             </form>
           </div>

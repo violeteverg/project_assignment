@@ -32,6 +32,7 @@ export const updateExpense = async (id: number, val: sendData) => {
   }
 };
 
+//Fungsi untuk menghapus data expense
 export const deleteExpense = async (id: number) => {
   try {
     const response = await axios.delete(`${api.expense}/${id}`, {
@@ -42,6 +43,24 @@ export const deleteExpense = async (id: number) => {
     return response.data;
   } catch (error) {
     console.error("Error updating expense:", error);
+    throw error;
+  }
+};
+
+//Fungsi untuk select year chart
+export const selectYear = async (year: string) => {
+  try {
+    const response = await axios.post(
+      api.month,
+      { year },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data.data;
+  } catch (error) {
     throw error;
   }
 };

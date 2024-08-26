@@ -23,6 +23,7 @@ export const api = {
   register: "/api/register",
   expense: "api/expense",
   logout: "api/logout",
+  month: "api/monthly",
 };
 
 export const httpMetaMessages: Record<

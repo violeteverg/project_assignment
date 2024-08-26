@@ -19,6 +19,7 @@ import { useMainStore } from "@/app/providers/storeProvider";
 import { useQuery } from "@tanstack/react-query";
 import { DataItem } from "@/app/utils/types/client";
 import { getByIdExpense } from "@/app/service/getData";
+import { FormSkeleton } from "../loader/Loader";
 
 export default function Modal() {
   const { setIsOpen, isOpen, expenseId } = useMainStore((state) => ({
@@ -28,11 +29,12 @@ export default function Modal() {
   }));
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const { data } = useQuery<DataItem>({
+  const { data, isLoading, isFetching } = useQuery<DataItem>({
     queryKey: ["EXPENSE_DETAIL"],
     queryFn: () => getByIdExpense(expenseId),
     enabled: !!expenseId,
   });
+  const loading = isLoading || isFetching;
   const defaultValues = {
     amount: data?.amount ?? 0,
     description: data?.description ?? "",
@@ -46,7 +48,11 @@ export default function Modal() {
           <DialogHeader>
             <DialogTitle>Update Expense</DialogTitle>
           </DialogHeader>
-          <FormExpense defaultValues={defaultValues} isDetail />
+          {loading ? (
+            <FormSkeleton />
+          ) : (
+            <FormExpense defaultValues={defaultValues} isDetail />
+          )}
         </DialogContent>
       </Dialog>
     );
@@ -58,7 +64,11 @@ export default function Modal() {
         <DrawerHeader>
           <DrawerTitle>Update Expense</DrawerTitle>
         </DrawerHeader>
-        <FormExpense defaultValues={defaultValues} isDetail />
+        {loading ? (
+          <FormSkeleton />
+        ) : (
+          <FormExpense defaultValues={defaultValues} isDetail />
+        )}
       </DrawerContent>
     </Drawer>
   );

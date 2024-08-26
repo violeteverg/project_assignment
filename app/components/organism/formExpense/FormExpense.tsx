@@ -30,8 +30,9 @@ export default function FormExpense({
 }: FormExpenseProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const { expenseId } = useMainStore((state) => ({
+  const { expenseId, setIsOpen } = useMainStore((state) => ({
     expenseId: state.expenseId,
+    setIsOpen: state.setIsOpen,
   }));
 
   const {
@@ -97,9 +98,7 @@ export default function FormExpense({
         ),
       });
       queryClient.invalidateQueries({ queryKey: ["EXPENSE_DATA"] });
-      if (setOpen) {
-        setOpen(false);
-      }
+      setIsOpen(false);
     },
     onError: () => {
       toast({
