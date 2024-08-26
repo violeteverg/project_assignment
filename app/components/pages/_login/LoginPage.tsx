@@ -114,7 +114,9 @@ export default function LoginPage() {
                   <p className='text-red-500'>{errors.password.message}</p>
                 )}
               </div>
-              <Button type='submit'>Sign in</Button>
+              <Button type='submit' disabled={loading}>
+                {loading ? "loading..." : "Sign In"}
+              </Button>
             </div>
           </form>
         </div>

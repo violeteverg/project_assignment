@@ -45,7 +45,7 @@ export default function CardExpense({
       title: "entertaiment",
     },
     {
-      id: 7,
+      id: 6,
       title: "clothing",
     },
   ];
@@ -69,7 +69,7 @@ export default function CardExpense({
         onClick={() => updateHandler(id)}
       >
         <div className='lg:grid lg:grid-cols-2 items-center'>
-          <CardTitle>{truncateText(description, 20)}</CardTitle>
+          <CardTitle>{truncateText(description, 15)}</CardTitle>
           <CardDescription>{categoryTitle}</CardDescription>
         </div>
 
