@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ReactQueryProviders from "./providers/ReactQueryProvider";
+import { Toaster } from "./components/ui/toaster";
+import { MainStoreProvider } from "./providers/storeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ReactQueryProviders>
+      <html lang='en'>
+        <body className={inter.className}>
+          <MainStoreProvider>
+            <main className='relative flex flex-col h-full'>{children}</main>
+          </MainStoreProvider>
+          <Toaster />
+        </body>
+      </html>
+    </ReactQueryProviders>
   );
 }
