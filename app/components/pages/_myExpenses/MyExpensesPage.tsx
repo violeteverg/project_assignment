@@ -34,7 +34,6 @@ export default function MyExpensesPage() {
   const { mutate } = useMutation({
     mutationFn: (year: string) => selectYear(year),
     onSuccess: (response) => {
-      console.log("resonse", response);
       setChartData(response);
     },
     onError: () => {
@@ -84,11 +83,11 @@ export default function MyExpensesPage() {
 
   return (
     <WidthWrapper className='h-full'>
-      <div className='flex justify-end m-2 gap-4'>
+      <div className='flex justify-end m-2 gap-2'>
         <YearPicker mutate={mutate} />
         <AddExpense />
       </div>
-      <div className='flex justify-center lg:items-center'>
+      <div className='flex justify-center lg:items-center lg:mt-2'>
         <Chart datas={chartData} />
       </div>
       <div className='h-full overflow-auto p-3 mt-4'>{dataHandle()}</div>

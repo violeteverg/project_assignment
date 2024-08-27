@@ -2,6 +2,7 @@ import { useMainStore } from "@/app/providers/storeProvider";
 import { Button } from "../../ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "../../ui/card";
 import { formatPrice, truncateText } from "@/app/utils/func";
+import Tooltips from "../tooltip/Tooltip";
 
 interface cardExpenseProps {
   id: number;
@@ -22,6 +23,9 @@ export default function CardExpense({
     isDelete: state.isDelete,
     setIsDelete: state.setIsDelete,
   }));
+  const maxLength = 15;
+  const textLength = description.length;
+  const renderDescription = textLength > maxLength;
 
   const categoryData = [
     {
@@ -69,16 +73,19 @@ export default function CardExpense({
         onClick={() => updateHandler(id)}
       >
         <div className='lg:grid lg:grid-cols-2 items-center'>
-          <CardTitle>{truncateText(description, 15)}</CardTitle>
+          <CardTitle>
+            <Tooltips
+              title={truncateText(description, 15)}
+              desc={description}
+            />
+          </CardTitle>
           <CardDescription>{categoryTitle}</CardDescription>
         </div>
 
         <p>{formatPrice(amount)}</p>
       </div>
       <CardContent className='justify-end flex w-full lg:w-[40%]'>
-        <Button className='' onClick={() => deleteHandler(id)}>
-          delete
-        </Button>
+        <Button onClick={() => deleteHandler(id)}>delete</Button>
       </CardContent>
     </Card>
   );
