@@ -25,7 +25,7 @@ export default function YearPicker({ mutate }: YearPickerProps) {
   ];
 
   return (
-    <div className='lg:w-[10%]'>
+    <div className='lg:w-[10%] w-[30%]'>
       <Select
         value={selectedYear}
         onValueChange={(value) => {

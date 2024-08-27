@@ -49,6 +49,7 @@ export default function DeleteExpense() {
         ),
       });
       queryClient.invalidateQueries({ queryKey: ["EXPENSE_DATA"] });
+      queryClient.invalidateQueries({ queryKey: ["MONTHLY_DATA"] });
       setIsDelete(false);
     },
     onError: () => {
@@ -80,7 +81,7 @@ export default function DeleteExpense() {
           <DialogHeader>
             <DialogTitle>Delete Expense</DialogTitle>
           </DialogHeader>
-          <div className='flex flex-col justify-center items-center gap-y-4'>
+          <div className='flex flex-col justify-center items-center gap-y-4 m-2'>
             <Image
               src='/warning_sign.svg'
               alt='warning'
@@ -103,7 +104,7 @@ export default function DeleteExpense() {
         <DrawerHeader>
           <DrawerTitle>Delete Expense</DrawerTitle>
         </DrawerHeader>
-        <div className='flex flex-col justify-center items-center gap-y-4'>
+        <div className='flex flex-col justify-center items-center gap-y-4 m-2'>
           <Image
             src='/warning_sign.svg'
             alt='warning'

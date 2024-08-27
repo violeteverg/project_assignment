@@ -28,8 +28,6 @@ export default function Chart({ datas }: ChartProps) {
   const chartdata = datas?.length === 0 ? data : datas;
   const loading = isLoading || isFetching;
 
-  console.log("monthly data", datas);
-
   const defaultChartData = [
     { month: "01", expense: 0 },
     { month: "02", expense: 0 },
@@ -61,7 +59,7 @@ export default function Chart({ datas }: ChartProps) {
   const chartConfig = {
     expense: {
       label: "Expense",
-      color: "#60a5fa",
+      color: "#2b415c",
       icon: Monitor,
     },
   } satisfies ChartConfig;
@@ -71,7 +69,7 @@ export default function Chart({ datas }: ChartProps) {
       {loading ? (
         <ChartSkeleton />
       ) : (
-        <div className='border border-black rounded-lg lg:w-[70%] p-2'>
+        <div className='border border-black rounded-lg lg:w-[70%] p-2 lg:m-4'>
           <ChartContainer config={chartConfig} className='min-h-[200px] w-full'>
             <BarChart data={chartDatas}>
               <CartesianGrid vertical={false} />
@@ -83,7 +81,7 @@ export default function Chart({ datas }: ChartProps) {
                 tickFormatter={(value) => value}
               />
               <ChartTooltip content={<ChartTooltipContent />} />
-              <Bar dataKey='expense' fill='var(--color-mobile)' radius={3} />
+              <Bar dataKey='expense' fill='#2b415c' radius={3} />
             </BarChart>
           </ChartContainer>
         </div>

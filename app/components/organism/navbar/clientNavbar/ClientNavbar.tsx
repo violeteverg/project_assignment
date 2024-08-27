@@ -15,7 +15,6 @@ export default function ClientNavbar({
   const [visible, setVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  // when user scrolling down navbar will like hidden
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     const handleScroll = () => {

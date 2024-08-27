@@ -14,7 +14,7 @@ export default function ServerNavbar() {
             </Link>
           </div>
           <div className='ml-auto flex items-center'>
-            <div className=' md:mr-6 lg:flex lg:flex-1 lg:items-center lg:justify-center lg:space-x-6'>
+            <div className=' md:mr-6 lg:flex lg:flex-1 lg:items-center lg:justify-center lg:space-x-6 mx-2'>
               <UserProfile />
             </div>
           </div>

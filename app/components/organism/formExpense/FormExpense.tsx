@@ -61,6 +61,7 @@ export default function FormExpense({
         ),
       });
       queryClient.invalidateQueries({ queryKey: ["EXPENSE_DATA"] });
+      queryClient.invalidateQueries({ queryKey: ["MONTHLY_DATA"] });
       if (setOpen) {
         setOpen(false);
       }
